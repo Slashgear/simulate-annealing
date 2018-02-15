@@ -1,66 +1,39 @@
-const _ = require('lodash');
 const math = require('mathjs');
-const chalk = require('chalk');
-const distance = require('gps-distance');
 
-const points = require('./capitals.json');
+module.exports = function(iterationLimit, temperature, decrease, fitness = () => 1, firstValue, neighbor = el => el, debug = false) {
+    let bestFound = {
+        fitness: fitness(firstValue),
+        value: firstValue,
+    };
 
-const showTravel = listOfPoints => listOfPoints.map(p => p.name);
+    let currentValue = {
+        ...bestFound
+    };
+    
+    let debugData = [] ;
 
-const evaluateTravel = listOfPoints => distance(listOfPoints.map(point => [point.lat, point.lon]));
-
-const randomSwap = array => {
-    const items = [...array];
-    const firstRandomIndex = Math.floor(Math.random()*items.length);
-    let secondRandomIndex = firstRandomIndex;
-    while(secondRandomIndex === firstRandomIndex) {
-        secondRandomIndex = Math.floor(Math.random()*items.length);
-    } 
-    const temp = items[secondRandomIndex];
-    items[secondRandomIndex]= items[firstRandomIndex];
-    items[firstRandomIndex] = temp;
-    return items;
-}
-
-const randomOrder = _.shuffle(points);
-
-console.log(chalk.red('Begin Step: ', showTravel(randomOrder), evaluateTravel(randomOrder)));
-
-let bestFoundOrder = {
-    order: [...randomOrder],
-    cost: evaluateTravel(randomOrder)
-};
-
-let currentOrder = {
-   order: [...randomOrder],
-    cost: bestFoundOrder.cost
-};
-const evolution = [];
-
-for(let temperature = 100000; temperature > 0; temperature--) {
-    const neighbor = randomSwap(currentOrder.order);
-    const neighborCost = evaluateTravel(neighbor);
-
-    if(neighborCost < bestFoundOrder.cost) {
-        bestFoundOrder = {
-            order: [...neighbor],
-            cost: neighborCost
-        };
-        currentOrder = {
-            order: [...neighbor],
-            cost: neighborCost
+    for(let i=0; i<iterationLimit; i++) {
+        const newValue = neighbor(currentValue.value)
+        const currentValueNeighbor = {
+            value: newValue,
+            fitness: fitness(newValue)
         }
-    } else {
-        const aleatoire = Math.random();
-        const estimate = math.exp(math.divide(currentOrder.cost - bestFoundOrder.cost, temperature));
-        if(aleatoire < estimate){
-            currentOrder = {
-                order: [...neighbor],
-                cost: neighborCost
+
+        if(currentValueNeighbor.fitness < bestFound.fitness) {
+            currentValue = currentValueNeighbor;
+            bestFound = currentValueNeighbor;
+        } else {
+            const randomValue = Math.random();
+            const estimate = math.exp(math.divide(currentValueNeighbor.fitness - bestFound.fitness, temperature));
+            if(randomValue < estimate){
+                currentValue = currentValueNeighbor; 
             }
         }
+        if(debug) {
+            debugData.push({i,temperature: Math.round(temperature,-1), bestFitness: Math.round(bestFound.fitness, -1), currentFitness: Math.round(currentValue.fitness, -1)})        
+        }
+        temperature = temperature * decrease;
     }
-    evolution.push({x: temperature, y: neighborCost});
-}
 
-console.log(chalk.yellow('Best travel found', showTravel(bestFoundOrder.order), '', bestFoundOrder.cost));
+    return {bestFound, debug: debugData};
+}
