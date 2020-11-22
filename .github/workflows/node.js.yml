@@ -32,4 +32,4 @@ jobs:
       - run: cd example
       - uses: r-lib/actions/setup-r@v1
         name: Generate R plot from node ${{ matrix.node-version }}
-        shell: Rscript plot.r
+      - run: Rscript plot.r
