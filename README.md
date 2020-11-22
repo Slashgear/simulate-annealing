@@ -1,4 +1,23 @@
-# Simulate Annealing implementation in JS
+<h1 align="center">Welcome to simulate-annealing 👋</h1>
+<p>
+  <a href="https://www.npmjs.com/package/simulate-annealing" target="_blank">
+    <img alt="Version" src="https://img.shields.io/npm/v/simulate-annealing.svg">
+  </a>
+  <a href="#" target="_blank">
+    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
+  </a>
+  <a href="https://twitter.com/Slashgear\_" target="_blank">
+    <img alt="Twitter: Slashgear\_" src="https://img.shields.io/twitter/follow/Slashgear\_.svg?style=social" />
+  </a>
+</p>
+
+> Simulate annealing algorithm implemented in JS
+
+## Install
+
+```sh
+yarn install
+```
 
 This module export function to generate simulate annealing with parameter :
 
@@ -12,4 +31,19 @@ This module export function to generate simulate annealing with parameter :
 
 ## Example
 
-`example` folder contains examples of usage.
+```sh
+yarn example
+```
+
+## Author
+
+👤 **Slashgear <antoine395.caron@gmail.com>**
+
+* Website: http://slashgear.github.io/
+* Twitter: [@Slashgear\_](https://twitter.com/Slashgear\_)
+* Github: [@Slashgear](https://github.com/Slashgear)
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
+
