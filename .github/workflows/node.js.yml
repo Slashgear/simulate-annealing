@@ -32,3 +32,8 @@ jobs:
       - uses: r-lib/actions/setup-r@v1
         name: Generate R plot from node ${{ matrix.node-version }}
       - run: Rscript ./example/plot.R
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: r-result-${{ matrix.node-version }}
+          path: rplot.jpg
