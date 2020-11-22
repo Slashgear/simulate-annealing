@@ -31,6 +31,6 @@ jobs:
 
       - uses: r-lib/actions/setup-r@v1
         name: Generate R plot from node ${{ matrix.node-version }}
-      - run: ls
       - run: cd example
-      - run: Rscript plot.r
+      - run: ls
+      - run: Rscript plot.R
