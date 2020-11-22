@@ -35,5 +35,5 @@ jobs:
 
       - uses: actions/upload-artifact@v2
         with:
-          name: r-result-${{ matrix.node-version }}
+          name: r-result-node-${{ matrix.node-version }}
           path: rplot.jpg
