@@ -29,7 +29,8 @@ jobs:
       - run: yarn install
       - run: yarn example
 
-      - run: cd example
       - uses: r-lib/actions/setup-r@v1
         name: Generate R plot from node ${{ matrix.node-version }}
+      - run: ls
+      - run: cd example
       - run: Rscript plot.r
