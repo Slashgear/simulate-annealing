@@ -6,8 +6,8 @@
   <a href="#" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
   </a>
-  <a href="https://twitter.com/Slashgear\_" target="_blank">
-    <img alt="Twitter: Slashgear\_" src="https://img.shields.io/twitter/follow/Slashgear\_.svg?style=social" />
+  <a href="https://twitter.com/Slashgear_" target="_blank">
+    <img alt="Twitter: Slashgear_" src="https://img.shields.io/twitter/follow/Slashgear_.svg?style=social" />
   </a>
 </p>
 
