@@ -1,6 +1,6 @@
 {
   "name": "simulate-annealing",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "index.js",
   "author": "Slashgear <antoine395.caron@gmail.com>",
   "license": "MIT",
@@ -8,9 +8,9 @@
     "mathjs": "^3.20.2"
   },
   "devDependencies": {
-    "lodash": "^4.17.19",
     "chalk": "^2.3.1",
-    "gps-distance": "^0.0.4"
+    "gps-distance": "^0.0.4",
+    "lodash": "^4.17.19"
   },
   "scripts": {
     "example": "node example/travellerProblem.js"
