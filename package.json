@@ -10,7 +10,7 @@
   "devDependencies": {
     "chalk": "^2.3.1",
     "gps-distance": "^0.0.4",
-    "lodash": "^4.17.19"
+    "lodash": "^4.17.21"
   },
   "scripts": {
     "example": "node example/travellerProblem.js"
